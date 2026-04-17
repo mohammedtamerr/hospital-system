@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Care Specialist Hospital</title>
+
+    <link rel="stylesheet" href="../css/style-en.css" />
+  </head>
+  <body>
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+      <div class="container top-bar-inner">
+        <div class="top-links">
+          <a href="#"
+            ><i class="fas fa-stethoscope"></i> Medical Opinion Platform</a
+          >
+          <a href="#"><i class="fas fa-handshake"></i> Investor Relations</a>
+          <a href="#"><i class="fas fa-user-plus"></i> Join Our Team</a>
+          <a href="#"><i class="fas fa-folder-medical"></i> Medical Records</a>
+        </div>
+        <div class="top-lang">
+          <a href="index.html" class="lang-btn"
+            ><i class="fas fa-globe"></i> عربي</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="container nav-inner">
+        <a href="#" class="logo">
+          <div class="logo-icon"><i class="fas fa-hospital-user"></i></div>
+          <div class="logo-text">
+            <span class="logo-name">Prime Care Health</span>
+            <span class="logo-sub">Specialist Hospital Group</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li class="has-dropdown">
+            <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="#about">Who We Are</a>
+              <a href="#about">Vision & Mission</a>
+              <a href="#about">Leadership</a>
+            </div>
+          </li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li class="has-dropdown">
+            <a href="#"
+              >Patients & Visitors <i class="fas fa-chevron-down"></i
+            ></a>
+            <div class="dropdown">
+              <a href="#appointment">Book Appointment</a>
+              <a href="#doctors">Our Doctors</a>
+              <a href="#">Patient Guide</a>
+            </div>
+          </li>
+          <li><a href="#doctors">Our Doctors</a></li>
+          <li class="has-dropdown">
+            <a href="#">Training Center <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="#">Training Programs</a>
+              <a href="#">Apply for Training</a>
+            </div>
+          </li>
+          <li><a href="#news">Media Center</a></li>
+          <li><a href="#contact">Medical Tourism</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn-book" onclick="openModal('appointment')">
+            <i class="fas fa-calendar-check"></i> Book Appointment
+          </button>
+          <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="hero" id="home">
+      <div class="hero-slides" id="heroSlides">
+        <div
+          class="hero-slide active"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1600&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">Prime Care Specialist Hospital</span>
+            <h1>Book Your<br />Appointment<br /><em>With Ease</em></h1>
+            <p>
+              World-class healthcare delivered by the region's most skilled and
+              compassionate specialists.
+            </p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="openModal('appointment')">
+                <i class="fas fa-calendar-plus"></i> Book Now
+              </button>
+              <button class="btn-outline" onclick="scrollToSection('#about')">
+                <i class="fas fa-info-circle"></i> About Us
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1551076805-e1869033e561?w=1600&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">Excellence in Care</span>
+            <h1>Spreading<br />Health,<br /><em>Fighting Disease</em></h1>
+            <p>
+              A globally ranked network of facilities with continuous investment
+              in cutting-edge digital healthcare technology.
+            </p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="openModal('appointment')">
+                <i class="fas fa-stethoscope"></i> Find a Doctor
+              </button>
+              <button
+                class="btn-outline"
+                onclick="scrollToSection('#services')"
+              >
+                <i class="fas fa-list-ul"></i> Our Services
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=1600&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">Expert Medical Team</span>
+            <h1>A Medical<br />Team at the<br /><em>Highest Level</em></h1>
+            <p>
+              An elite roster of physicians and specialists ensuring the finest
+              care for you and your family.
+            </p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="scrollToSection('#doctors')">
+                <i class="fas fa-user-md"></i> Meet Our Doctors
+              </button>
+              <button
+                class="btn-outline"
+                onclick="scrollToSection('#departments')"
+              >
+                <i class="fas fa-hospital"></i> Departments
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="slider-btn prev" onclick="changeSlide(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-btn next" onclick="changeSlide(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- ===== QUICK ACTIONS ===== -->
+    <section class="quick-actions">
+      <div class="container">
+        <h2 class="section-center-title">How Can We Help You Today?</h2>
+        <div class="actions-grid">
+          <div class="action-card" onclick="openModal('doctor')">
+            <div class="action-icon"><i class="fas fa-search"></i></div>
+            <span>Find a Doctor</span>
+            <i class="fas fa-arrow-right action-arrow"></i>
+          </div>
+          <div class="action-card" onclick="openModal('service')">
+            <div class="action-icon"><i class="fas fa-clipboard-list"></i></div>
+            <span>Find a Service</span>
+            <i class="fas fa-arrow-right action-arrow"></i>
+          </div>
+          <div class="action-card" onclick="scrollToSection('#contact')">
+            <div class="action-icon"><i class="fas fa-phone-alt"></i></div>
+            <span>Contact Us</span>
+            <i class="fas fa-arrow-right action-arrow"></i>
+          </div>
+          <div class="action-card" onclick="scrollToSection('#about')">
+            <div class="action-icon"><i class="fas fa-info-circle"></i></div>
+            <span>More About Us</span>
+            <i class="fas fa-arrow-right action-arrow"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="about">
+      <div class="container about-inner">
+        <div class="about-images">
+          <div class="img-main">
+            <img
+              src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600"
+              alt="Prime Care Hospital"
+            />
+          </div>
+          <div class="img-secondary">
+            <img
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400"
+              alt="Hospital Facilities"
+            />
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">Why Choose Prime Care?</span>
+          <h2 class="about-title">
+            <span class="green">Spreading Health,</span><br />Fighting Disease
+          </h2>
+          <p>
+            Prime Care Specialist Hospital Group is a pioneer in specialized
+            medical care. Founded in 2000, we opened the first fully integrated
+            private hospital in the Eastern Region, expanding into a globally
+            ranked network committed to quality, safety, and patient experience.
+          </p>
+          <p>
+            We offer a comprehensive spectrum of care — from primary and
+            specialized outpatient services to critical care, rehabilitation,
+            home care, and a modern pharmacy network. Ranked among the top
+            hospitals in the Gulf for patient satisfaction.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num" data-target="500">0</span
+              ><span class="stat-plus">+</span>
+              <span class="stat-label">Specialist Doctors</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="25">0</span
+              ><span class="stat-plus">+</span>
+              <span class="stat-label">Medical Departments</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="150000">0</span
+              ><span class="stat-plus">+</span>
+              <span class="stat-label">Patients Per Year</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="24">0</span
+              ><span class="stat-plus">/7</span>
+              <span class="stat-label">Always Open</span>
+            </div>
+          </div>
+          <div class="about-btns">
+            <button class="btn-primary" onclick="scrollToSection('#about')">
+              <i class="fas fa-info-circle"></i> About the Hospital
+            </button>
+            <button class="btn-ghost" onclick="openModal('tour')">
+              <i class="fas fa-play-circle"></i> Virtual Tour
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Offer</span>
+          <h2>Our Medical Services</h2>
+          <p>
+            We provide a wide spectrum of integrated medical services to the
+            highest standards of quality and patient safety.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #e8f5e9; color: #2e7d32"
+            >
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3>Cardiac Center</h3>
+            <p>
+              State-of-the-art cardiac care including hybrid operating suites,
+              electrophysiology labs, and interventional cardiology for complex
+              heart conditions.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #e3f2fd; color: #1565c0"
+            >
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Neurology Center</h3>
+            <p>
+              Whether your condition is acute or chronic, our neurology team
+              delivers evidence-based treatments that dramatically improve
+              patient quality of life.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #fff8e1; color: #f57f17"
+            >
+              <i class="fas fa-baby"></i>
+            </div>
+            <h3>Pediatrics Center</h3>
+            <p>
+              Children with neurological, muscular, and developmental challenges
+              are supported by a multidisciplinary team dedicated to their
+              growth and wellbeing.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #fce4ec; color: #c62828"
+            >
+              <i class="fas fa-bone"></i>
+            </div>
+            <h3>Orthopedics Center</h3>
+            <p>
+              One of the largest orthopedic centers in the region, offering
+              complete diagnostic and therapeutic services for all bone, joint,
+              and fracture conditions.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #f3e5f5; color: #6a1b9a"
+            >
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Ophthalmology Center</h3>
+            <p>
+              Comprehensive eye care and surgical services using the latest
+              technology, performed by a distinguished team of ophthalmology
+              consultants.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #e0f7fa; color: #00695c"
+            >
+              <i class="fas fa-lungs"></i>
+            </div>
+            <h3>Pulmonology Center</h3>
+            <p>
+              Our pulmonology team specializes in diagnosing and treating all
+              respiratory diseases, from chronic conditions to complex pulmonary
+              disorders.
+            </p>
+            <a href="#" class="service-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+        <div class="center-btn">
+          <button class="btn-primary">
+            <i class="fas fa-th-large"></i> All Services
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEPARTMENTS ===== -->
+    <section class="departments-section" id="departments">
+      <div class="container">
+        <div class="section-header light">
+          <span class="section-label">Our Specialties</span>
+          <h2>Medical Departments</h2>
+          <p>
+            Over 25 specialized medical departments equipped with the latest
+            technology and highly trained staff.
+          </p>
+        </div>
+        <div class="dept-grid">
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-heartbeat"></i><span>Cardiology</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-brain"></i><span>Neurology</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-bone"></i><span>Orthopedics</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-baby"></i><span>Pediatrics & NICU</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-eye"></i><span>Ophthalmology</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-tooth"></i><span>Dentistry</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-lungs"></i><span>Pulmonology</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-dna"></i><span>Oncology</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-cut"></i><span>General Surgery</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-female"></i><span>Obstetrics & Gynecology</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-flask"></i><span>Medical Laboratory</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-x-ray"></i><span>Radiology & Imaging</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOCTORS ===== -->
+    <section class="doctors-section" id="doctors">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Our Medical Team</span>
+          <h2>Our Specialist Doctors</h2>
+          <p>
+            An elite roster of physicians and consultants with local and
+            international expertise.
+          </p>
+        </div>
+        <div class="doctors-grid">
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300"
+                alt="Dr. Ahmed Al-Sayed"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">
+                  Book Appointment
+                </button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Ahmed Al-Sayed</h3>
+              <span class="doctor-specialty">Consultant Cardiologist</span>
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 4.9</span>
+                <span><i class="fas fa-user-check"></i> 1,200+ Patients</span>
+              </div>
+            </div>
+          </div>
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300"
+                alt="Dr. Sarah Al-Omari"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">
+                  Book Appointment
+                </button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Sarah Al-Omari</h3>
+              <span class="doctor-specialty">Consultant Neurologist</span>
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 4.8</span>
+                <span><i class="fas fa-user-check"></i> 980+ Patients</span>
+              </div>
+            </div>
+          </div>
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300"
+                alt="Dr. Mohammed Al-Zahrani"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">
+                  Book Appointment
+                </button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Mohammed Al-Zahrani</h3>
+              <span class="doctor-specialty"
+                >Consultant Orthopedic Surgeon</span
+              >
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 4.9</span>
+                <span><i class="fas fa-user-check"></i> 870+ Patients</span>
+              </div>
+            </div>
+          </div>
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300"
+                alt="Dr. Layla Al-Ahmadi"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">
+                  Book Appointment
+                </button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Layla Al-Ahmadi</h3>
+              <span class="doctor-specialty"
+                >Consultant Pediatrician & Neonatologist</span
+              >
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 5.0</span>
+                <span><i class="fas fa-user-check"></i> 1,500+ Patients</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="center-btn">
+          <button class="btn-primary">
+            <i class="fas fa-users-medical"></i> All Doctors
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-section">
+      <div class="test-bg">
+        <img
+          src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600"
+          alt="Hospital"
+        />
+        <div class="test-overlay"></div>
+      </div>
+      <div class="container test-content">
+        <div class="section-header light">
+          <span class="section-label green-label">Patient Voices</span>
+          <h2>What Our Patients Say</h2>
+        </div>
+        <div class="testimonials-slider">
+          <div class="testimonial active">
+            <div class="test-stars">★★★★★</div>
+            <p>
+              "The attentiveness and follow-up across every aspect of my care
+              was extraordinary. I'm proud to call this hospital my first
+              choice, and deeply grateful for the caliber of the medical team.
+              Thank you sincerely."
+            </p>
+            <div class="test-author">
+              <div class="test-avatar">M</div>
+              <div>
+                <strong>Mohammed Al-Ali</strong>
+                <span>Cardiac Department Patient</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="test-stars">★★★★★</div>
+            <p>
+              "Exceptional service and a truly professional team. Every member
+              of the staff treated me with warmth and competence. This hospital
+              sets a gold standard for patient care in the region."
+            </p>
+            <div class="test-author">
+              <div class="test-avatar">S</div>
+              <div>
+                <strong>Samia Al-Ahmad</strong>
+                <span>Neurology Department Patient</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="test-stars">★★★★★</div>
+            <p>
+              "My experience at Prime Care was exceptional from admission to
+              discharge. Everything was organized and comfortable. I recommend
+              this hospital without hesitation to everyone."
+            </p>
+            <div class="test-author">
+              <div class="test-avatar">A</div>
+              <div>
+                <strong>Abdullah Al-Harthi</strong>
+                <span>Orthopedics Department Patient</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-controls">
+          <button onclick="changeTest(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button onclick="changeTest(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APPOINTMENT ===== -->
+    <section class="appointment-section" id="appointment">
+      <div class="container">
+        <div class="appt-inner">
+          <div class="appt-text">
+            <span class="section-label">Quick Booking</span>
+            <h2>Book Your<br />Appointment <span class="green">Now</span></h2>
+            <p>
+              Book effortlessly and enjoy a premium medical experience with our
+              top specialist doctors.
+            </p>
+            <ul class="appt-features">
+              <li>
+                <i class="fas fa-check-circle"></i> Instant appointment
+                confirmation
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Automatic reminder before
+                your visit
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> Easy cancellation &
+                rescheduling
+              </li>
+              <li><i class="fas fa-check-circle"></i> 24/7 booking service</li>
+            </ul>
+          </div>
+          <div class="appt-form">
+            <h3><i class="fas fa-calendar-check"></i> Book an Appointment</h3>
+            <form onsubmit="submitAppointment(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="tel" placeholder="+966 5x xxx xxxx" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Medical Department</label>
+                <select required>
+                  <option value="">Select Department</option>
+                  <option>Cardiology</option>
+                  <option>Neurology</option>
+                  <option>Orthopedics</option>
+                  <option>Pediatrics & NICU</option>
+                  <option>Ophthalmology</option>
+                  <option>Obstetrics & Gynecology</option>
+                  <option>General Surgery</option>
+                  <option>Internal Medicine</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Preferred Date</label>
+                  <input type="date" required />
+                </div>
+                <div class="form-group">
+                  <label>Preferred Time</label>
+                  <select>
+                    <option>Morning (8 AM – 12 PM)</option>
+                    <option>Afternoon (12 PM – 4 PM)</option>
+                    <option>Evening (4 PM – 8 PM)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Notes (Optional)</label>
+                <textarea
+                  placeholder="Any additional information..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary btn-full">
+                <i class="fas fa-check"></i> Confirm Booking
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOCATION ===== -->
+    <section class="location-section" id="contact">
+      <div class="container location-inner">
+        <div class="location-img">
+          <img
+            src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=700"
+            alt="Prime Care Hospital"
+          />
+        </div>
+        <div class="location-info">
+          <span class="section-label green-label">Prime Care Health</span>
+          <h2>Our Location</h2>
+          <p>
+            Prime Care Specialist Hospital is located in the heart of the city,
+            making it easily accessible for all our patients across the region.
+          </p>
+          <button class="btn-primary">
+            <i class="fas fa-map-marker-alt"></i> Open on Map
+          </button>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <strong>Working Hours</strong>
+                <span>Open 24/7</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <strong>Phone Number</strong>
+                <span>920022920</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+              <div>
+                <strong>Address</strong>
+                <span>Dhahran Rd, Al Mubarraz 36342, Saudi Arabia</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <strong>Email</strong>
+                <span>info@primecare-hospital.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AWARDS ===== -->
+    <section class="awards-section">
+      <div class="container">
+        <div class="awards-header">
+          <h2>Awards &amp; <span class="green">Accreditations</span></h2>
+        </div>
+        <div class="awards-grid">
+          <div class="award-item">
+            <i class="fas fa-award"></i><span>CBAHI Accredited</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-medal"></i><span>JCI Accredited</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-certificate"></i><span>ACR Certified</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-star"></i><span>Best Gulf Hospital</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-trophy"></i
+            ><span>Healthcare Excellence Award</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section class="news-section" id="news">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label green-label">Health &amp; Wellness</span>
+          <h2>Articles &amp; News</h2>
+          <p>
+            Stay up to date with the latest medical insights, hospital news, and
+            health tips from our team of experts.
+          </p>
+          <button class="btn-ghost">
+            <i class="fas fa-th-large"></i> Browse All
+          </button>
+        </div>
+        <div class="news-grid">
+          <div class="news-card">
+            <div class="news-img">
+              <img
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400"
+                alt="Article"
+              />
+              <span class="news-tag">General Health</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"
+                ><i class="fas fa-calendar"></i> March 10, 2026</span
+              >
+              <h3>
+                Diabetes in Children: Symptoms Including Frequent Urination,
+                Nausea, and Serious Warning Signs
+              </h3>
+              <a href="#" class="service-link"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="news-card">
+            <div class="news-img">
+              <img
+                src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=400"
+                alt="Article"
+              />
+              <span class="news-tag">Chronic Disease</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"
+                ><i class="fas fa-calendar"></i> March 5, 2026</span
+              >
+              <h3>
+                From Daily Habits to Serious Conditions: The Leading Causes of
+                High Blood Pressure
+              </h3>
+              <a href="#" class="service-link"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="news-card">
+            <div class="news-img">
+              <img
+                src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400"
+                alt="Article"
+              />
+              <span class="news-tag">Medical Research</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"
+                ><i class="fas fa-calendar"></i> March 1, 2026</span
+              >
+              <h3>
+                Can Cumulative Diabetes Really Be Cured Permanently? Here's What
+                the Science Says
+              </h3>
+              <a href="#" class="service-link"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APP DOWNLOAD ===== -->
+    <section class="app-section">
+      <div class="container app-inner">
+        <div class="app-text">
+          <span class="section-label">Download Our App</span>
+          <h2>Prime Care Health <span class="green">In Your Pocket</span></h2>
+          <p>
+            View your medical records, manage monthly prescriptions, and enjoy
+            seamless electronic payment — anytime, anywhere.
+          </p>
+          <div class="app-btns">
+            <a href="#" class="app-btn"
+              ><i class="fab fa-google-play"></i>
+              <div><span>Get it on</span><strong>Google Play</strong></div></a
+            >
+            <a href="#" class="app-btn"
+              ><i class="fab fa-apple"></i>
+              <div>
+                <span>Download on the</span><strong>App Store</strong>
+              </div></a
+            >
+          </div>
+        </div>
+        <div class="app-img">
+          <img
+            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400"
+            alt="App"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a
+            href="#"
+            class="logo"
+            style="margin-bottom: 16px; display: inline-flex"
+          >
+            <div class="logo-icon"><i class="fas fa-hospital-user"></i></div>
+            <div class="logo-text">
+              <span class="logo-name" style="color: white"
+                >Prime Care Health</span
+              >
+              <span class="logo-sub" style="color: var(--green-light)"
+                >Specialist Hospital Group</span
+              >
+            </div>
+          </a>
+          <p>
+            Prime Care Specialist Hospital Group — a pioneer in specialized
+            medical care in the Eastern Region since 2000.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#news">Media Center</a></li>
+            <li><a href="#">Training Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Digital Services</h4>
+          <ul>
+            <li><a href="#appointment">Book Appointment</a></li>
+            <li><a href="#">Electronic Medical File</a></li>
+            <li><a href="#">Lab Results</a></li>
+            <li><a href="#">Electronic Invoice</a></li>
+            <li><a href="#">Medical Consultation</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-items">
+            <div><i class="fas fa-phone"></i> 920022920</div>
+            <div>
+              <i class="fas fa-envelope"></i> info@primecare-hospital.com
+            </div>
+            <div>
+              <i class="fas fa-map-marker-alt"></i> Dhahran Rd, Al Mubarraz
+              36342, Saudi Arabia
+            </div>
+            <div><i class="fas fa-clock"></i> Open 24/7</div>
+          </div>
+          <div class="twitter-follow">
+            <a href="#" class="twitter-btn"
+              ><i class="fab fa-twitter"></i> Follow Us for Updates</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <span>© 2026 Prime Care Hospital. All Rights Reserved.</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== FLOATING CALL ===== -->
+    <div class="floating-call">
+      <a href="tel:920022920">
+        <i class="fas fa-phone"></i>
+        <span>Call Us<br />920022920</span>
+      </a>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button
+      class="back-to-top"
+      id="backToTop"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+      <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-content" id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- ===== SUCCESS TOAST ===== -->
+    <div class="toast" id="toast">
+      <i class="fas fa-check-circle"></i>
+      <span id="toastMsg">Appointment booked successfully!</span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

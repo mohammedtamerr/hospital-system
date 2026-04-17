@@ -1,0 +1,981 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مستشفي بريام كير</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+      <div class="container top-bar-inner">
+        <div class="top-links">
+          <a href="#"><i class="fas fa-stethoscope"></i> منصة الرأي الطبي</a>
+          <a href="#"><i class="fas fa-handshake"></i> علاقات المستثمرين</a>
+          <a href="#"><i class="fas fa-user-plus"></i> انضم إلى فريقنا</a>
+          <a href="#"><i class="fas fa-folder-medical"></i> الملف الطبي</a>
+        </div>
+        <div class="top-lang">
+          <a href="index-en.html" class="lang-btn"><i class="fas fa-globe"></i> English</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="container nav-inner">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <img
+              src="../Gemini_Generated_Image_o9kcmoo9kcmoo9kc.png"
+              alt="logo"
+              class="fas fa-hospital-user"
+              width="80px"
+              height="80px"
+            />
+          </div>
+          <div class="logo-text">
+            <span class="logo-ar">مستشفي برايم كير</span>
+            <span class="logo-en">Prime Health</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li class="has-dropdown">
+            <a href="#">عن المستشفى <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="#about">من نحن</a>
+              <a href="#about">رؤيتنا ورسالتنا</a>
+              <a href="#about">قيادتنا</a>
+            </div>
+          </li>
+          <li><a href="#services">الخدمات</a></li>
+          <li><a href="#departments">الأقسام الطبية</a></li>
+          <li class="has-dropdown">
+            <a href="#">المرضى والزوار <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="#appointment">حجز موعد</a>
+              <a href="#doctors">أطباؤنا</a>
+              <a href="#">دليل المريض</a>
+            </div>
+          </li>
+          <li><a href="#doctors">أطباؤنا</a></li>
+          <li class="has-dropdown">
+            <a href="#">مركز التدريب <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown">
+              <a href="#">البرامج التدريبية</a>
+              <a href="#">التقديم للتدريب</a>
+            </div>
+          </li>
+          <li><a href="#news">المركز الإعلامي</a></li>
+          <li><a href="#contact">السياحة العلاجية</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn-book" onclick="openModal('appointment')">
+            <i class="fas fa-calendar-check"></i> احجز موعدك الآن
+          </button>
+          <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"><img src="../img/Menu-Navigation--Streamline-Freehand.png" alt="" height=""></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="hero" id="home">
+      <div class="hero-slides" id="heroSlides">
+        <div
+          class="hero-slide active"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1600&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">مستشفى برايم كير</span>
+            <h1>احجز موعدك<br />بكل سهولة</h1>
+            <p>رعاية صحية متكاملة بأيدي أمهر الأطباء المتخصصين</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="openModal('appointment')" >
+                <i class="fas fa-calendar-plus"></i> احجز الآن
+              </button>
+              <button class="btn-outline" onclick="scrollTo('#about')">
+                <i class="fas fa-info-circle"></i> تعرف علينا
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1551076805-e1869033e561?w=1600&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">خدمات متميزة</span>
+            <h1>ننشر الصحة<br />ونحارب المرض</h1>
+            <p>
+              شبكة من المنشآت المصنفة عالمياً مع استثمار مستمر في التقنيات
+              الرقمية
+            </p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="openModal('appointment')">
+                <i class="fas fa-stethoscope"></i> ابحث عن طبيب
+              </button>
+              <button class="btn-outline" onclick="scrollTo('#services')">
+                <i class="fas fa-list-ul"></i> خدماتنا
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=1600&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">أطباء متخصصون</span>
+            <h1>فريق طبي<br />على أعلى مستوى</h1>
+            <p>نخبة من الأطباء والمتخصصين لضمان أفضل رعاية طبية لكم ولأسرتكم</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="scrollTo('#doctors')">
+                <i class="fas fa-user-md"></i> أطباؤنا
+              </button>
+              <button class="btn-outline" onclick="scrollTo('#departments')">
+                <i class="fas fa-hospital"></i> الأقسام
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="slider-btn prev" onclick="changeSlide(-1)">
+        <i class="fas fa-chevron-right"><img src="../img/right-arrow.png" alt="" height="30 px"
+          width="30px" class="img-button"></i>
+      </button>
+      <button class="slider-btn next" onclick="changeSlide(1)">
+        <i class="fas fa-chevron-left"><div class="">
+        <img src="../img/left-arrow.png" alt="" height="30 px"
+          width="30px" class="img-button"></i>
+      </button>
+      <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- ===== QUICK ACTIONS ===== -->
+    <section class="quick-actions">
+      <div class="container">
+        <h2 class="section-center-title">كيف يمكننا مساعدتك اليوم؟</h2>
+        <div class="actions-grid">
+          <div class="action-card" onclick="openModal('doctor')">
+            <div class="action-icon"><img src="../img/doctor.png
+              " alt=""height="80%"><i class="fas fa-search"></i></div>
+            <span>إبحث عن طبيب</span>
+            <i class="fas fa-arrow-left action-arrow"></i>
+          </div>
+          <div class="action-card" onclick="openModal('service')">
+            <div class="action-icon"><img src="../img/Dr.png" alt="" height="80%"><i class="fas fa-clipboard-list"></i></div>
+            <span>إبحث عن خدمة</span>
+            <i class="fas fa-arrow-left action-arrow"></i>
+          </div>
+          <div class="action-card" onclick="scrollTo('#contact')">
+            <div class="action-icon"><img src="../img/call.png" alt="" height="80%"><i class="fas fa-phone-alt"></i></div>
+            <span>تواصل معنا</span>
+            <i class="fas fa-arrow-left action-arrow"></i>
+          </div>
+          <div class="action-card" onclick="scrollTo('#about')">
+            <div class="action-icon"><img src="../img/information.png" alt="" height="80%"><i class="fas fa-info-circle"></i></div>
+            <span>المزيد عن المستشفى</span>
+            <i class="fas fa-arrow-left action-arrow"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="about">
+      <div class="container about-inner">
+        <div class="about-text">
+          <span class="section-label">لماذا تختار مستشفى برايم كير؟</span>
+          <h2 class="about-title">
+            <span class="green">ننشر الصحة</span><br />ونحارب المرض
+          </h2>
+          <p>
+            تُعدّ مستشفى برايم كير التخصصية من رواد الرعاية الطبية المتخصصة،
+            تأسست عام 2000 بافتتاح أول مستشفى خاص متكامل الخدمات. توسعت لتشمل
+            شبكة من المنشآت المصنفة عالمياً ضمن الأفضل في الجودة والسلامة وتجربة
+            المريض، مع استثمار مستمر في التقنيات الرقمية.
+          </p>
+          <p>
+            تقدّم المجموعة خدمات متكاملة تشمل الرعاية الأولية والمتخصصة، الرعاية
+            الحرجة، التأهيل والرعاية المنزلية، وشبكة صيدليات حديثة. يُصنّف
+            مستشفانا ضمن أفضل عشرة مستشفيات متخصصة في رضا المرضى.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num" data-target="500">0</span>+
+              <span class="stat-label">طبيب متخصص</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="25">0</span>+
+              <span class="stat-label">قسم طبي</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="150000">0</span>+
+              <span class="stat-label">مريض سنوياً</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="24">0</span>/7
+              <span class="stat-label">خدمة متواصلة</span>
+            </div>
+          </div>
+          <div class="about-btns">
+            <button class="btn-primary" onclick="scrollTo('#about')">
+              <i class="fas fa-info-circle"></i> عن المستشفى
+            </button>
+            <button class="btn-ghost" onclick="openModal('tour')">
+              <i class="fas fa-play-circle"></i> جولة افتراضية
+            </button>
+          </div>
+        </div>
+        <div class="about-images">
+          <div class="img-main">
+            <img
+              src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600"
+              alt="مستشفى النور"
+            />
+          </div>
+          <div class="img-secondary">
+            <img
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400"
+              alt="مرافق المستشفى"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">ما نقدمه لك</span>
+          <h2>خدماتنا الطبية</h2>
+          <p>
+            نقدم طيفاً واسعاً من الخدمات الطبية المتكاملة بأعلى معايير الجودة
+            والسلامة
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #e8f5e9; color: #2e7d32"
+            >
+              <i class="fas fa-heartbeat"><img src="../img/heart.png" alt="" height="80%"></i>
+            </div>
+            <h3>مركز القلب</h3>
+            <p>
+              مركز القلب المتقدم مع جميع التقنيات القلبية الحديثة مثل غرفة
+              العمليات الهجينة ومختبر الفيزيولوجيا الكهربائية.
+            </p>
+            <a href="#" class="service-link"
+              >اقرأ المزيد <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #e3f2fd; color: #1565c0"
+            >
+              <i class="fas fa-brain"><img src="../img/nerve-cell.png" alt="" height="80%"></i>
+            </div>
+            <h3>مركز الأعصاب</h3>
+            <p>
+              باختلاف طبيعة السكتة الدماغية أو شدتها، أثبتت علاجاتنا فعاليتها
+              العالية في تحسين جودة حياة المرضى.
+            </p>
+            <a href="#" class="service-link"
+              >اقرأ المزيد <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #fff8e1; color: #f57f17"
+            >
+              <i class="fas fa-baby"><img src="../img/playing-kids.png" alt="" height="80%"></i>
+            </div>
+            <h3>مركز الأطفال</h3>
+            <p>
+              يحتاج الأطفال المصابون باضطرابات عصبية وعضلية ومصابون بتأخر النمو
+              لفريق يتمتع بالخبرة والتخصصات المتعددة.
+            </p>
+            <a href="#" class="service-link"
+              >اقرأ المزيد <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #fce4ec; color: #c62828"
+            >
+              <i class="fas fa-bone"><img src="../img/joint.png" alt="" height="80%"></i>
+            </div>
+            <h3>مركز العظام</h3>
+            <p>
+              مركز طب وجراحة العظام في مستشفانا من أكبر المراكز المتخصصة على
+              مستوى المنطقة لجميع حالات أمراض العظام والمفاصل والكسور.
+            </p>
+            <a href="#" class="service-link"
+              >اقرأ المزيد <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #f3e5f5; color: #6a1b9a"
+            >
+              <i class="fas fa-eye"><img src="../img/witness.png" alt="" height="50%"></i>
+            </div>
+            <h3>مركز العيون</h3>
+            <p>
+              نقدم خدمات متكاملة لأمراض وجراحات العيون بأحدث التقنيات وعلى يد
+              نخبة من الاستشاريين المتخصصين في طب وجراحة العيون.
+            </p>
+            <a href="#" class="service-link"
+              >اقرأ المزيد <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+          <div class="service-card">
+            <div
+              class="service-icon"
+              style="background: #e0f7fa; color: #00695c"
+            >
+              <i class="fas fa-lungs"><img src="../img/Medical-Specialty-Lungs--Streamline-Freehand.png" alt="" height="80%"></i>
+            </div>
+            <h3>مركز الصدر والتنفس</h3>
+            <p>
+              يضم مركزنا فريقاً متكاملاً من أطباء الصدر والتنفس المتخصصين لتشخيص
+              وعلاج جميع أمراض الجهاز التنفسي.
+            </p>
+            <a href="#" class="service-link"
+              >اقرأ المزيد <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+        </div>
+        <div class="center-btn">
+          <button class="btn-primary">
+            <i class="fas fa-th-large"></i> جميع الخدمات
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEPARTMENTS ===== -->
+    <section class="departments-section" id="departments">
+      <div class="container">
+        <div class="section-header light">
+          <span class="section-label">تخصصاتنا</span>
+          <h2>الأقسام الطبية</h2>
+          <p>
+            نضم أكثر من 25 قسماً طبياً متخصصاً بأحدث التجهيزات والكوادر البشرية
+            المؤهلة
+          </p>
+        </div>
+        <div class="dept-grid">
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-heartbeat"></i><span>قلب وأوعية دموية</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-brain"></i><span>أعصاب</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-bone"></i><span>عظام ومفاصل</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-baby"></i><span>أطفال وحديثي الولادة</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-eye"></i><span>عيون</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-tooth"></i><span>أسنان</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-lungs"></i><span>صدر وتنفس</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-dna"></i><span>أورام وعلاج كيميائي</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-cut"></i><span>جراحة عامة</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-female"></i><span>نساء وولادة</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-flask"></i><span>مختبرات طبية</span>
+          </div>
+          <div class="dept-item" onclick="openModal('dept')">
+            <i class="fas fa-x-ray"></i><span>أشعة وتصوير طبي</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOCTORS ===== -->
+    <section class="doctors-section" id="doctors">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">كوادرنا البشرية</span>
+          <h2>أطباؤنا المتخصصون</h2>
+          <p>نخبة من أفضل الأطباء والاستشاريين ذوي الخبرات المحلية والدولية</p>
+        </div>
+        <div class="doctors-grid">
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300"
+                alt="د. أحمد السيد"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">احجز موعد</button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>د. أحمد السيد</h3>
+              <span class="doctor-specialty">استشاري أمراض القلب</span>
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 4.9</span>
+                <span><i class="fas fa-user-check"></i> 1200+ مريض</span>
+              </div>
+            </div>
+          </div>
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300"
+                alt="د. سارة العمري"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">احجز موعد</button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>د. سارة العمري</h3>
+              <span class="doctor-specialty">استشارية أمراض الأعصاب</span>
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 4.8</span>
+                <span><i class="fas fa-user-check"></i> 980+ مريض</span>
+              </div>
+            </div>
+          </div>
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300"
+                alt="د. محمد الزهراني"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">احجز موعد</button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>د. محمد الزهراني</h3>
+              <span class="doctor-specialty">استشاري جراحة العظام</span>
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 4.9</span>
+                <span><i class="fas fa-user-check"></i> 870+ مريض</span>
+              </div>
+            </div>
+          </div>
+          <div class="doctor-card">
+            <div class="doctor-img">
+              <img
+                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300"
+                alt="د. ليلى الأحمدي"
+              />
+              <div class="doctor-overlay">
+                <button onclick="openModal('appointment')">احجز موعد</button>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>د. ليلى الأحمدي</h3>
+              <span class="doctor-specialty"
+                >استشارية أطفال وحديثي الولادة</span
+              >
+              <div class="doctor-meta">
+                <span><i class="fas fa-star"></i> 5.0</span>
+                <span><i class="fas fa-user-check"></i> 1500+ مريض</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="center-btn">
+          <button class="btn-primary">
+            <i class="fas fa-users-medical"></i> جميع الأطباء
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-section">
+      <div class="test-bg">
+        <img
+          src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600"
+          alt="مستشفى"
+        />
+        <div class="test-overlay"></div>
+      </div>
+      <div class="container test-content">
+        <div class="section-header light">
+          <span class="section-label green-label">آراء مرضانا</span>
+          <h2>ماذا يقول مرضانا</h2>
+        </div>
+        <div class="testimonials-slider">
+          <div class="testimonial active">
+            <div class="test-stars">★★★★★</div>
+            <p>
+              "الاهتمام والرعاية بدقة وحرص المتابعة من جميع النواحي كأخباري
+              بالنتائج أول بأول فخراً لهذا المستشفى الكبير بأول ومتابعة حالتي
+              والامتنان على اختيار نخبة الدكاترة مثل هذه ودمتم بألف خير فلكم
+              جزيل الشكر"
+            </p>
+            <div class="test-author">
+              <div class="test-avatar">م</div>
+              <div>
+                <strong>محمد العلي</strong>
+                <span>مريض قسم القلب</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="test-stars">★★★★★</div>
+            <p>
+              "خدمة ممتازة واحترافية عالية في التعامل مع المرضى. الفريق الطبي
+              كان على مستوى عالٍ جداً من الكفاءة والإنسانية. شكراً لجميع
+              العاملين في هذا الصرح الطبي الرائع."
+            </p>
+            <div class="test-author">
+              <div class="test-avatar">س</div>
+              <div>
+                <strong>سمية الأحمد</strong>
+                <span>مريضة قسم الأعصاب</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="test-stars">★★★★★</div>
+            <p>
+              "تجربتي في مستشفى النور كانت استثنائية. من لحظة الوصول حتى الخروج،
+              كل شيء كان منظماً ومريحاً. أنصح الجميع بهذا المستشفى الرائع."
+            </p>
+            <div class="test-author">
+              <div class="test-avatar">ع</div>
+              <div>
+                <strong>عبدالله الحارثي</strong>
+                <span>مريض قسم العظام</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-controls">
+          <button onclick="changeTest(-1)">
+            <i class="fas fa-chevron-right"><img src="../img/Messages-People-Person-Bubble-Square-1--Streamline-Freehand.png" alt="" height="50%"></i>
+          </button>
+          <button onclick="changeTest(1)">
+            <i class="fas fa-chevron-left"><img src="../img/Messages-People-Person-Bubble-Square-1--Streamline-Freehand.png" alt="" height="50%"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APPOINTMENT ===== -->
+    <section class="appointment-section" id="appointment">
+      <div class="container">
+        <div class="appt-inner">
+          <div class="appt-text">
+            <span class="section-label">حجز سريع</span>
+            <h2>احجز موعدك <span class="green">الآن</span></h2>
+            <p>
+              احجز موعدك بسهولة وراحة واستمتع بتجربة طبية متميزة مع أفضل الأطباء
+              المتخصصين
+            </p>
+            <ul class="appt-features">
+              <li><i class="fas fa-check-circle"></i> تأكيد فوري للموعد</li>
+              <li>
+                <i class="fas fa-check-circle"></i> تذكير تلقائي قبل الموعد
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i> إمكانية الإلغاء والتغيير
+              </li>
+              <li><i class="fas fa-check-circle"></i> خدمة 24/7</li>
+            </ul>
+          </div>
+          <div class="appt-form">
+            <h3><i class="fas fa-calendar-check"></i> احجز موعدك</h3>
+            <form onsubmit="submitAppointment(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>الاسم الكامل</label>
+                  <input type="text" placeholder="أدخل اسمك الكامل" required />
+                </div>
+                <div class="form-group">
+                  <label>رقم الجوال</label>
+                  <input type="tel" placeholder="05xxxxxxxx" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>القسم الطبي</label>
+                <select required>
+                  <option value="">اختر القسم</option>
+                  <option>قلب وأوعية دموية</option>
+                  <option>أعصاب</option>
+                  <option>عظام ومفاصل</option>
+                  <option>أطفال وحديثي الولادة</option>
+                  <option>عيون</option>
+                  <option>نساء وولادة</option>
+                  <option>جراحة عامة</option>
+                  <option>أمراض داخلية</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>التاريخ المفضل</label>
+                  <input type="date" required />
+                </div>
+                <div class="form-group">
+                  <label>الوقت المفضل</label>
+                  <select>
+                    <option>صباحاً (8 - 12)</option>
+                    <option>ظهراً (12 - 4)</option>
+                    <option>مساءً (4 - 8)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>ملاحظات (اختياري)</label>
+                <textarea
+                  placeholder="أي معلومات إضافية تريد إضافتها..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary btn-full">
+                <i class="fas fa-check"></i> تأكيد الحجز
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOCATION ===== -->
+    <section class="location-section" id="contact">
+      <div class="container location-inner">
+        <div class="location-img">
+          <img
+            src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=700"
+            alt="مستشفى برايم كير"
+          />
+        </div>
+        <div class="location-info">
+          <span class="section-label green-label">برايم كير الصحية</span>
+          <h2>موقعنا</h2>
+          <p>
+            يقع مستشفى برايم كير التخصصي في قلب وسط المدينة، مما يسهّل على
+            مرضانا الوصول إليه.
+          </p>
+          <button class="btn-primary">
+            <i class="fas fa-map-marker-alt"></i> فتح الموقع على الخريطة
+          </button>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <strong>ساعات العمل</strong>
+                <span>مفتوح 24/7</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <strong>رقم الهاتف</strong>
+                <span>920022920</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+              <div>
+                <strong>العنوان</strong>
+                <span
+                  >شارع الملك فهد، المنطقة الشرقية، المملكة العربية
+                  السعودية</span
+                >
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <strong>البريد الإلكتروني</strong>
+                <span>info@primecare-hospital.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AWARDS ===== -->
+    <section class="awards-section">
+      <div class="container">
+        <div class="awards-header">
+          <h2>الجوائز و<span class="green">الشهادات</span></h2>
+        </div>
+        <div class="awards-grid">
+          <div class="award-item">
+            <i class="fas fa-award"></i><span>CBAHI</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-medal"></i><span>JCI Accredited</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-certificate"></i><span>ACR</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-star"></i><span>أفضل مستشفى خليجي</span>
+          </div>
+          <div class="award-item">
+            <i class="fas fa-trophy"></i><span>جائزة التميز الصحي</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section class="news-section" id="news">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label green-label">المستشفى الصحية</span>
+          <h2>مقالات</h2>
+          <p>ابق على اطلاع بآخر الأخبار لدينا، واعثر على آخر التحديثات.</p>
+          <button class="btn-ghost">
+            <i class="fas fa-th-large"></i> استعراض الكل
+          </button>
+        </div>
+        <div class="news-grid">
+          <div class="news-card">
+            <div class="news-img">
+              <img
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400"
+                alt="مقال"
+              />
+              <span class="news-tag">صحة عامة</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"
+                ><i class="fas fa-calendar"></i> 10 مارس 2026</span
+              >
+              <h3>
+                أعراض السكر عند الأطفال: تبول، غثيان، جوع وهزال وأعراض خطيرة
+              </h3>
+              <a href="#" class="service-link"
+                >اقرأ المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+          <div class="news-card">
+            <div class="news-img">
+              <img
+                src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=400"
+                alt="مقال"
+              />
+              <span class="news-tag">أمراض مزمنة</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"
+                ><i class="fas fa-calendar"></i> 5 مارس 2026</span
+              >
+              <h3>
+                أسباب من العادات اليومية إلى الأمراض: أسباب ارتفاع ضغط الدم
+              </h3>
+              <a href="#" class="service-link"
+                >اقرأ المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+          <div class="news-card">
+            <div class="news-img">
+              <img
+                src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400"
+                alt="مقال"
+              />
+              <span class="news-tag">بحوث طبية</span>
+            </div>
+            <div class="news-body">
+              <span class="news-date"
+                ><i class="fas fa-calendar"></i> 1 مارس 2026</span
+              >
+              <h3>
+                هل من الممكن حقاً علاج السكر التراكمي نهائياً؟ إليكم الإجابة
+              </h3>
+              <a href="#" class="service-link"
+                >اقرأ المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APP DOWNLOAD ===== -->
+    <section class="app-section">
+      <div class="container app-inner">
+        <div class="app-text">
+          <span class="section-label">حمّل تطبيق برايم كير</span>
+          <h2>تطبيق برايم كير <span class="green">في جيبك</span></h2>
+          <p>
+            لعرض سجلك الطبي، احصل على أدويتك الشهرية واستمتع بخدمة الدفع
+            الإلكتروني في أي وقت ومن أي مكان
+          </p>
+          <div class="app-btns">
+            <a href="#" class="app-btn"
+              ><i class="fab fa-google-play"></i>
+              <div><span>تنزيل من</span><strong>Google Play</strong></div></a
+            >
+            <a href="#" class="app-btn"
+              ><i class="fab fa-apple"></i>
+              <div><span>تنزيل من</span><strong>App Store</strong></div></a
+            >
+          </div>
+        </div>
+        <div class="app-img">
+          <img
+            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400"
+            alt="تطبيق"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">
+              <img
+                src="../Gemini_Generated_Image_o9kcmoo9kcmoo9kc.png"
+                alt="logo"
+                class="fas fa-hospital-user"
+                width="80px"
+                height="80px"
+              />
+            </div>
+            <div class="logo-text">
+              <span class="logo-ar">برايم كير</span>
+              <span class="logo-en">Prime Care Health</span>
+            </div>
+          </div>
+          <p>
+            تُعدّ مستشفى برايم كير من رواد الرعاية الطبية المتخصصة في المنطقة
+            الشرقية منذ عام 2000.
+          </p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>روابط مفيدة</h4>
+          <ul>
+            <li><a href="#about">عن المستشفى</a></li>
+            <li><a href="#doctors">الأطباء</a></li>
+            <li><a href="#services">الخدمات</a></li>
+            <li><a href="#departments">الأقسام</a></li>
+            <li><a href="#news">المركز الإعلامي</a></li>
+            <li><a href="#">مركز التدريب</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>الخدمات الإلكترونية</h4>
+          <ul>
+            <li><a href="#appointment">حجز موعد</a></li>
+            <li><a href="#">الملف الطبي الإلكتروني</a></li>
+            <li><a href="#">نتائج التحاليل</a></li>
+            <li><a href="#">الفاتورة الإلكترونية</a></li>
+            <li><a href="#">استشارة طبية</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>تواصل معنا</h4>
+          <div class="footer-contact-items">
+            <div><i class="fas fa-phone"></i> 920022920</div>
+            <div>
+              <i class="fas fa-envelope"></i> info@primecare-hospital.com
+            </div>
+            <div>
+              <i class="fas fa-map-marker-alt"></i> شارع الملك فهد، المنطقة
+              الشرقية
+            </div>
+            <div><i class="fas fa-clock"></i> مفتوح 24/7</div>
+          </div>
+          <div class="twitter-follow">
+            <a href="#" class="twitter-btn"
+              ><i class="fab fa-twitter"></i> ابق على اطلاع مع جديدنا</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <span>© 2026 مستشفى بريام كير جميع الحقوق محفوظة</span>
+          <a href="#">سياسة الخصوصية</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== FLOATING CALL ===== -->
+    <div class="floating-call">
+      <a href="tel:920022920">
+        <i class="fas fa-phone"></i>
+        <span>اتصل بنا<br />920022920</span>
+      </a>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button
+      class="back-to-top"
+      id="backToTop"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+      <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-content" id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- ===== SUCCESS TOAST ===== -->
+    <div class="toast" id="toast">
+      <i class="fas fa-check-circle"></i>
+      <span id="toastMsg">تم الحجز بنجاح!</span>
+    </div>
+
+<script src="api.js"></script>
+<script src="script.js"></script>
+  </body>
+</html>
