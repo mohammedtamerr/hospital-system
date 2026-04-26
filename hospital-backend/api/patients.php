@@ -55,7 +55,8 @@ if ($method === 'GET') {
 }
 
 elseif ($method === 'POST') {
-    requireRole(['admin', 'receptionist', 'nurse']);
+    // تسجيل مريض جديد - متاح للجميع (public)
+    // بدون حاجة لـ authentication
 
     $body = getBody();
     validateRequired($body, ['name_ar', 'gender', 'phone']);

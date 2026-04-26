@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-ar="مستشفى النور التخصصي" data-en="Al-Nour Specialist Hospital">مستشفى النور التخصصي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/rtl.css">
+</head>
+<body>
+
+<!-- TOAST NOTIFICATIONS -->
+<div class="toast-container" id="toasts"></div>
+
+<!-- ====== LOGIN PAGE ====== -->
+<div id="loginPage">
+  <div class="login-bg">
+    <div class="login-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">
+          <i class="fas fa-hospital-symbol"></i>
+        </div>
+        <h1 class="login-title" data-ar="مستشفى النور التخصصي" data-en="Al-Nour Specialist Hospital">مستشفى النور التخصصي</h1>
+        <p class="login-sub" data-ar="نظام الإدارة المتكاملة" data-en="Integrated Management System">نظام الإدارة المتكاملة</p>
+      </div>
+
+      <div class="lang-toggle-wrap">
+        <button class="lang-toggle" onclick="toggleLang()" id="langBtn">
+          <i class="fas fa-globe"></i>
+          <span id="langLabel">English</span>
+        </button>
+      </div>
+
+      <div id="loginAlert"></div>
+
+      <div class="login-form">
+        <div class="form-group">
+          <label class="form-label" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
+          <div class="input-icon-wrap">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="loginEmail" class="has-icon" placeholder="admin@hospital.com" value="admin@hospital.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="كلمة المرور" data-en="Password">كلمة المرور</label>
+          <div class="input-icon-wrap">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="loginPassword" class="has-icon" placeholder="••••••••" value="password">
+            <button class="toggle-pw" onclick="togglePw()" type="button"><i class="fas fa-eye" id="pwEye"></i></button>
+          </div>
+        </div>
+        <button class="btn btn-login" id="loginBtn" onclick="doLogin()">
+          <i class="fas fa-sign-in-alt"></i>
+          <span data-ar="تسجيل الدخول" data-en="Sign In">تسجيل الدخول</span>
+        </button>
+      </div>
+
+      <div class="login-demo">
+        <span data-ar="بيانات تجريبية:" data-en="Demo credentials:">بيانات تجريبية:</span>
+        admin@hospital.com / password
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== APP ====== -->
+<div id="appPage" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon"><i class="fas fa-hospital-symbol"></i></div>
+      <div class="logo-text">
+        <span class="logo-name" data-ar="النور التخصصي" data-en="Al-Nour Hospital">النور التخصصي</span>
+        <span class="logo-sub" data-ar="نظام الإدارة" data-en="Management System">نظام الإدارة</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-label" data-ar="الرئيسية" data-en="Main">الرئيسية</span>
+      <a class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+        <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
+        <span data-ar="لوحة التحكم" data-en="Dashboard">لوحة التحكم</span>
+      </a>
+
+      <span class="nav-label" data-ar="إدارة المستشفى" data-en="Hospital Management">إدارة المستشفى</span>
+      <a class="nav-item" data-page="appointments" onclick="showPage('appointments')">
+        <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
+        <span data-ar="المواعيد" data-en="Appointments">المواعيد</span>
+        <span class="nav-badge" id="pendingBadge" style="display:none"></span>
+      </a>
+      <a class="nav-item" data-page="patients" onclick="showPage('patients')">
+        <span class="nav-icon"><i class="fas fa-user-injured"></i></span>
+        <span data-ar="المرضى" data-en="Patients">المرضى</span>
+      </a>
+      <a class="nav-item" data-page="doctors" onclick="showPage('doctors')">
+        <span class="nav-icon"><i class="fas fa-user-md"></i></span>
+        <span data-ar="الأطباء" data-en="Doctors">الأطباء</span>
+      </a>
+      <a class="nav-item" data-page="departments" onclick="showPage('departments')">
+        <span class="nav-icon"><i class="fas fa-hospital-alt"></i></span>
+        <span data-ar="الأقسام" data-en="Departments">الأقسام</span>
+      </a>
+
+      <span class="nav-label" data-ar="التواصل والمحتوى" data-en="Communication">التواصل والمحتوى</span>
+      <a class="nav-item" data-page="messages" onclick="showPage('messages')">
+        <span class="nav-icon"><i class="fas fa-envelope"></i></span>
+        <span data-ar="الرسائل" data-en="Messages">الرسائل</span>
+        <span class="nav-badge danger" id="msgBadge" style="display:none"></span>
+      </a>
+      <a class="nav-item" data-page="news" onclick="showPage('news')">
+        <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+        <span data-ar="الأخبار" data-en="News">الأخبار</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar" id="userAvatar">A</div>
+        <div class="user-info">
+          <div class="user-name" id="userName">—</div>
+          <div class="user-role" id="userRole">—</div>
+        </div>
+        <button class="btn-logout" onclick="doLogout()" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="mainContent">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="topbar-title-wrap">
+        <h1 class="topbar-title" id="pageTitle">لوحة التحكم</h1>
+        <p class="topbar-sub" id="pageSubtitle"></p>
+      </div>
+
+      <div class="topbar-right">
+        <button class="topbar-btn" onclick="toggleLang()" title="Switch Language">
+          <i class="fas fa-globe"></i>
+          <span class="topbar-lang" id="topLangLabel">EN</span>
+        </button>
+        <button class="topbar-btn" onclick="refreshCurrent()">
+          <i class="fas fa-sync-alt" id="refreshIcon"></i>
+        </button>
+        <div class="topbar-user-mini">
+          <div class="user-avatar sm" id="topUserAvatar">A</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGES CONTAINER -->
+    <div class="page-container">
+
+      <!-- ===== DASHBOARD ===== -->
+      <section id="page-dashboard" class="page active">
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-card blue" onclick="showPage('patients')">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-users"></i></div>
+              <div class="stat-value" id="s-patients"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="إجمالي المرضى" data-en="Total Patients">إجمالي المرضى</div>
+          </div>
+          <div class="stat-card teal" onclick="showPage('doctors')">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-user-md"></i></div>
+              <div class="stat-value" id="s-doctors"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="الأطباء النشطين" data-en="Active Doctors">الأطباء النشطين</div>
+          </div>
+          <div class="stat-card amber" onclick="showPage('appointments')">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-calendar-day"></i></div>
+              <div class="stat-value" id="s-today"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="مواعيد اليوم" data-en="Today's Appointments">مواعيد اليوم</div>
+          </div>
+          <div class="stat-card pink" onclick="showPage('appointments')">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-clock"></i></div>
+              <div class="stat-value" id="s-pending"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="مواعيد معلقة" data-en="Pending Appointments">مواعيد معلقة</div>
+          </div>
+          <div class="stat-card purple" onclick="">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-bed"></i></div>
+              <div class="stat-value" id="s-rooms"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="غرف مشغولة" data-en="Occupied Rooms">غرف مشغولة</div>
+          </div>
+          <div class="stat-card red" onclick="showPage('messages')">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+              <div class="stat-value" id="s-msgs"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="رسائل جديدة" data-en="New Messages">رسائل جديدة</div>
+          </div>
+          <div class="stat-card green" onclick="showPage('departments')">
+            <div class="stat-top">
+              <div class="stat-icon"><i class="fas fa-hospital-alt"></i></div>
+              <div class="stat-value" id="s-depts"><div class="skeleton w60"></div></div>
+            </div>
+            <div class="stat-label" data-ar="الأقسام النشطة" data-en="Active Departments">الأقسام النشطة</div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-calendar-check accent-icon"></i>
+                <span data-ar="آخر المواعيد" data-en="Recent Appointments">آخر المواعيد</span>
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="showPage('appointments')" data-ar="عرض الكل" data-en="View All">عرض الكل</button>
+            </div>
+            <div id="dashAppts" class="dash-list"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-user-md accent-icon"></i>
+                <span data-ar="أطباء المناوبة" data-en="On-Duty Doctors">أطباء المناوبة</span>
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="showPage('doctors')" data-ar="عرض الكل" data-en="View All">عرض الكل</button>
+            </div>
+            <div id="dashDoctors" class="dash-list"></div>
+          </div>
+        </div>
+
+        <div class="card mt-20">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-envelope accent-icon"></i>
+              <span data-ar="آخر الرسائل" data-en="Recent Messages">آخر الرسائل</span>
+            </div>
+            <button class="btn btn-sm btn-ghost" onclick="showPage('messages')" data-ar="عرض الكل" data-en="View All">عرض الكل</button>
+          </div>
+          <div id="dashMsgs" class="msg-list"></div>
+        </div>
+      </section>
+
+      <!-- ===== APPOINTMENTS ===== -->
+      <section id="page-appointments" class="page">
+        <div class="toolbar">
+          <div class="toolbar-right">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" id="apptSearch" data-ar-placeholder="بحث..." data-en-placeholder="Search..." placeholder="بحث..." oninput="filterAppointments()">
+            </div>
+            <select id="apptStatus" onchange="loadAppointments()">
+              <option value="" data-ar="كل الحالات" data-en="All Statuses">كل الحالات</option>
+              <option value="pending" data-ar="معلق" data-en="Pending">معلق</option>
+              <option value="confirmed" data-ar="مؤكد" data-en="Confirmed">مؤكد</option>
+              <option value="completed" data-ar="مكتمل" data-en="Completed">مكتمل</option>
+              <option value="cancelled" data-ar="ملغي" data-en="Cancelled">ملغي</option>
+            </select>
+            <input type="date" id="apptDate" onchange="loadAppointments()">
+          </div>
+          <button class="btn btn-primary" onclick="openModal('modalNewAppt')">
+            <i class="fas fa-plus"></i>
+            <span data-ar="موعد جديد" data-en="New Appointment">موعد جديد</span>
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span data-ar="جدول المواعيد" data-en="Appointments Schedule">جدول المواعيد</span>
+              <span class="count-badge" id="apptCount"></span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table id="apptTableEl">
+              <thead>
+                <tr>
+                  <th data-ar="#" data-en="#">#</th>
+                  <th data-ar="المريض/الزائر" data-en="Patient/Guest">المريض/الزائر</th>
+                  <th data-ar="الطبيب" data-en="Doctor">الطبيب</th>
+                  <th data-ar="القسم" data-en="Dept.">القسم</th>
+                  <th data-ar="التاريخ" data-en="Date">التاريخ</th>
+                  <th data-ar="الوقت" data-en="Time">الوقت</th>
+                  <th data-ar="الحالة" data-en="Status">الحالة</th>
+                  <th data-ar="النوع" data-en="Type">النوع</th>
+                  <th data-ar="إجراءات" data-en="Actions">إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="apptTable">
+                <tr><td colspan="9" class="loading-cell"><div class="spinner"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PATIENTS ===== -->
+      <section id="page-patients" class="page">
+        <div class="toolbar">
+          <div class="toolbar-right">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" id="patSearch" data-ar-placeholder="بحث بالاسم أو الهاتف..." data-en-placeholder="Search by name or phone..." placeholder="بحث بالاسم أو الهاتف..." oninput="searchPatients()">
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('modalNewPatient')">
+            <i class="fas fa-user-plus"></i>
+            <span data-ar="إضافة مريض" data-en="Add Patient">إضافة مريض</span>
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span data-ar="سجل المرضى" data-en="Patient Registry">سجل المرضى</span>
+              <span class="count-badge" id="patCount"></span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-ar="#" data-en="#">#</th>
+                  <th data-ar="الاسم" data-en="Name">الاسم</th>
+                  <th data-ar="الجنس" data-en="Gender">الجنس</th>
+                  <th data-ar="فصيلة الدم" data-en="Blood Type">فصيلة الدم</th>
+                  <th data-ar="الهاتف" data-en="Phone">الهاتف</th>
+                  <th data-ar="تاريخ الميلاد" data-en="Date of Birth">تاريخ الميلاد</th>
+                  <th data-ar="تاريخ التسجيل" data-en="Registration">تاريخ التسجيل</th>
+                  <th data-ar="إجراءات" data-en="Actions">إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="patTable">
+                <tr><td colspan="8" class="loading-cell"><div class="spinner"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DOCTORS ===== -->
+      <section id="page-doctors" class="page">
+        <div class="toolbar">
+          <div class="toolbar-right">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" id="docSearch" data-ar-placeholder="بحث بالاسم أو التخصص..." data-en-placeholder="Search by name or specialty..." placeholder="بحث..." oninput="searchDoctors()">
+            </div>
+            <select id="docDeptFilter" onchange="loadDoctors()">
+              <option value="" data-ar="كل الأقسام" data-en="All Departments">كل الأقسام</option>
+            </select>
+          </div>
+        </div>
+        <div id="docGrid" class="doc-grid">
+          <div class="empty-full"><div class="spinner"></div></div>
+        </div>
+      </section>
+
+      <!-- ===== DEPARTMENTS ===== -->
+      <section id="page-departments" class="page">
+        <div id="deptGrid" class="dept-grid">
+          <div class="empty-full"><div class="spinner"></div></div>
+        </div>
+      </section>
+
+      <!-- ===== MESSAGES ===== -->
+      <section id="page-messages" class="page">
+        <div class="toolbar">
+          <div class="toolbar-right">
+            <select id="msgStatus" onchange="loadMessages()">
+              <option value="" data-ar="كل الرسائل" data-en="All Messages">كل الرسائل</option>
+              <option value="new" data-ar="جديدة" data-en="New">جديدة</option>
+              <option value="read" data-ar="مقروءة" data-en="Read">مقروءة</option>
+              <option value="replied" data-ar="تم الرد" data-en="Replied">تم الرد</option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span data-ar="رسائل التواصل" data-en="Contact Messages">رسائل التواصل</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-ar="#" data-en="#">#</th>
+                  <th data-ar="المرسل" data-en="Sender">المرسل</th>
+                  <th data-ar="البريد" data-en="Email">البريد</th>
+                  <th data-ar="الموضوع" data-en="Subject">الموضوع</th>
+                  <th data-ar="الرسالة" data-en="Message">الرسالة</th>
+                  <th data-ar="الحالة" data-en="Status">الحالة</th>
+                  <th data-ar="التاريخ" data-en="Date">التاريخ</th>
+                  <th data-ar="إجراءات" data-en="Actions">إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="msgTable">
+                <tr><td colspan="8" class="loading-cell"><div class="spinner"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== NEWS ===== -->
+      <section id="page-news" class="page">
+        <div class="toolbar" style="justify-content:flex-end">
+          <button class="btn btn-primary" onclick="openModal('modalNewNews')">
+            <i class="fas fa-plus"></i>
+            <span data-ar="خبر جديد" data-en="New Article">خبر جديد</span>
+          </button>
+        </div>
+        <div id="newsGrid" class="news-grid">
+          <div class="empty-full"><div class="spinner"></div></div>
+        </div>
+      </section>
+
+    </div><!-- /page-container -->
+  </main>
+</div><!-- /appPage -->
+
+<!-- ====== MODALS ====== -->
+
+<!-- NEW APPOINTMENT -->
+<div class="modal-overlay" id="modalNewAppt">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title"><i class="fas fa-calendar-plus"></i> <span data-ar="حجز موعد جديد" data-en="Book New Appointment">حجز موعد جديد</span></h2>
+      <button class="modal-close" onclick="closeModal('modalNewAppt')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-ar="الطبيب *" data-en="Doctor *">الطبيب *</label>
+          <select id="apptDoctorId"><option value="" data-ar="اختر الطبيب..." data-en="Select Doctor...">اختر الطبيب...</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="القسم" data-en="Department">القسم</label>
+          <select id="apptDeptId"><option value="" data-ar="اختر القسم..." data-en="Select Department...">اختر القسم...</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="التاريخ *" data-en="Date *">التاريخ *</label>
+          <input type="date" id="apptDateNew">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="الوقت *" data-en="Time *">الوقت *</label>
+          <input type="time" id="apptTimeNew">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="نوع الزيارة" data-en="Visit Type">نوع الزيارة</label>
+          <select id="apptType">
+            <option value="new" data-ar="زيارة جديدة" data-en="New Visit">زيارة جديدة</option>
+            <option value="follow_up" data-ar="متابعة" data-en="Follow-up">متابعة</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="اسم الزائر *" data-en="Guest Name *">اسم الزائر *</label>
+          <input type="text" id="apptGuestName" data-ar-placeholder="الاسم بالكامل" data-en-placeholder="Full Name" placeholder="الاسم بالكامل">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="هاتف الزائر *" data-en="Guest Phone *">هاتف الزائر *</label>
+          <input type="tel" id="apptGuestPhone" placeholder="05xxxxxxxx">
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-ar="ملاحظات" data-en="Notes">ملاحظات</label>
+          <textarea id="apptNotes" data-ar-placeholder="أي معلومات إضافية..." data-en-placeholder="Any additional information..." placeholder="ملاحظات..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalNewAppt')" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
+      <button class="btn btn-primary" onclick="createAppointment()"><i class="fas fa-check"></i> <span data-ar="حجز الموعد" data-en="Book Appointment">حجز الموعد</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- NEW PATIENT -->
+<div class="modal-overlay" id="modalNewPatient">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h2 class="modal-title"><i class="fas fa-user-plus"></i> <span data-ar="إضافة مريض جديد" data-en="Add New Patient">إضافة مريض جديد</span></h2>
+      <button class="modal-close" onclick="closeModal('modalNewPatient')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-section-title" data-ar="البيانات الأساسية" data-en="Basic Information">البيانات الأساسية</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-ar="الاسم بالعربية *" data-en="Name in Arabic *">الاسم بالعربية *</label>
+          <input type="text" id="patNameAr" data-ar-placeholder="الاسم الرباعي" data-en-placeholder="Full name in Arabic" placeholder="الاسم الرباعي">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="الاسم بالإنجليزية" data-en="Name in English">الاسم بالإنجليزية</label>
+          <input type="text" id="patNameEn" placeholder="Full Name in English">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="الجنس *" data-en="Gender *">الجنس *</label>
+          <select id="patGender">
+            <option value="male" data-ar="ذكر" data-en="Male">ذكر</option>
+            <option value="female" data-ar="أنثى" data-en="Female">أنثى</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="رقم الهوية الوطنية" data-en="National ID">رقم الهوية الوطنية</label>
+          <input type="text" id="patNationalId" placeholder="10 digits">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="الهاتف *" data-en="Phone *">الهاتف *</label>
+          <input type="tel" id="patPhone" placeholder="05xxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+          <input type="email" id="patEmail" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="تاريخ الميلاد" data-en="Date of Birth">تاريخ الميلاد</label>
+          <input type="date" id="patDOB">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="فصيلة الدم" data-en="Blood Type">فصيلة الدم</label>
+          <select id="patBlood">
+            <option value="" data-ar="غير محدد" data-en="Not specified">غير محدد</option>
+            <option value="A+">A+</option><option value="A-">A-</option>
+            <option value="B+">B+</option><option value="B-">B-</option>
+            <option value="AB+">AB+</option><option value="AB-">AB-</option>
+            <option value="O+">O+</option><option value="O-">O-</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-ar="العنوان" data-en="Address">العنوان</label>
+          <input type="text" id="patAddress" data-ar-placeholder="المدينة، الحي، الشارع" data-en-placeholder="City, District, Street">
+        </div>
+      </div>
+      <div class="form-section-title mt-16" data-ar="المعلومات الطبية" data-en="Medical Information">المعلومات الطبية</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" data-ar="الحساسية" data-en="Allergies">الحساسية</label>
+          <input type="text" id="patAllergies" data-ar-placeholder="إن وجدت" data-en-placeholder="If any">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="الأمراض المزمنة" data-en="Chronic Diseases">الأمراض المزمنة</label>
+          <input type="text" id="patChronic" data-ar-placeholder="إن وجدت" data-en-placeholder="If any">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="اسم جهة الطوارئ" data-en="Emergency Contact Name">اسم جهة الطوارئ</label>
+          <input type="text" id="patEmergencyName">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="هاتف الطوارئ" data-en="Emergency Phone">هاتف الطوارئ</label>
+          <input type="tel" id="patEmergencyPhone">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalNewPatient')" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
+      <button class="btn btn-primary" onclick="createPatient()"><i class="fas fa-check"></i> <span data-ar="إضافة المريض" data-en="Add Patient">إضافة المريض</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT APPOINTMENT STATUS -->
+<div class="modal-overlay" id="modalEditAppt">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h2 class="modal-title"><i class="fas fa-edit"></i> <span data-ar="تحديث الموعد" data-en="Update Appointment">تحديث الموعد</span></h2>
+      <button class="modal-close" onclick="closeModal('modalEditAppt')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editApptId">
+      <div class="form-group mb-16">
+        <label class="form-label" data-ar="الحالة الجديدة" data-en="New Status">الحالة الجديدة</label>
+        <select id="editApptStatus">
+          <option value="pending" data-ar="معلق" data-en="Pending">معلق</option>
+          <option value="confirmed" data-ar="مؤكد" data-en="Confirmed">مؤكد</option>
+          <option value="completed" data-ar="مكتمل" data-en="Completed">مكتمل</option>
+          <option value="cancelled" data-ar="ملغي" data-en="Cancelled">ملغي</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-ar="ملاحظات" data-en="Notes">ملاحظات</label>
+        <textarea id="editApptNotes"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalEditAppt')" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
+      <button class="btn btn-primary" onclick="updateAppointment()"><i class="fas fa-save"></i> <span data-ar="حفظ" data-en="Save">حفظ</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT DETAIL -->
+<div class="modal-overlay" id="modalPatientDetail">
+  <div class="modal modal-xl">
+    <div class="modal-header">
+      <h2 class="modal-title"><i class="fas fa-user-injured"></i> <span data-ar="ملف المريض" data-en="Patient Record">ملف المريض</span></h2>
+      <button class="modal-close" onclick="closeModal('modalPatientDetail')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="patientDetailBody">
+      <div class="empty-full"><div class="spinner"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- NEW NEWS -->
+<div class="modal-overlay" id="modalNewNews">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h2 class="modal-title"><i class="fas fa-newspaper"></i> <span data-ar="إضافة خبر جديد" data-en="Add New Article">إضافة خبر جديد</span></h2>
+      <button class="modal-close" onclick="closeModal('modalNewNews')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label class="form-label" data-ar="العنوان بالعربية *" data-en="Arabic Title *">العنوان بالعربية *</label>
+          <input type="text" id="newsTitleAr" data-ar-placeholder="عنوان الخبر بالعربية" data-en-placeholder="News title in Arabic">
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-ar="العنوان بالإنجليزية" data-en="English Title">العنوان بالإنجليزية</label>
+          <input type="text" id="newsTitleEn" placeholder="News title in English">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="التصنيف" data-en="Category">التصنيف</label>
+          <input type="text" id="newsCategory" data-ar-placeholder="مثال: طبي، تقني..." data-en-placeholder="e.g. Medical, Technology...">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="رابط الصورة" data-en="Image URL">رابط الصورة</label>
+          <input type="text" id="newsImage" placeholder="https://...">
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-ar="المحتوى *" data-en="Content *">المحتوى *</label>
+          <textarea id="newsContent" style="min-height:120px" data-ar-placeholder="محتوى الخبر..." data-en-placeholder="Article content..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-ar="النشر الفوري" data-en="Immediate Publish">النشر الفوري</label>
+          <select id="newsPublish">
+            <option value="1" data-ar="نعم - نشر الآن" data-en="Yes - Publish Now">نعم - نشر الآن</option>
+            <option value="0" data-ar="لا - حفظ كمسودة" data-en="No - Save as Draft">لا - حفظ كمسودة</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalNewNews')" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
+      <button class="btn btn-primary" onclick="createNews()"><i class="fas fa-check"></i> <span data-ar="نشر الخبر" data-en="Publish">نشر الخبر</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="../js/api.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -34,7 +34,7 @@ htdocs/
 شغّل Apache + MySQL
 
 ### 2. قاعدة البيانات
-- افتح: http://localhost/phpmyadmin
+- افتح: http://localhost:8080/phpmyadmin
 - اضغط "New" → اسمها `hospital_db`
 - اضغط "Import" → اختار ملف `sql/hospital_db.sql`
 - اضغط "Go"
@@ -53,8 +53,8 @@ hospital-backend/
 ```
 
 ### 5. تجربة
-- الموقع: http://localhost/hospital-system-main/hospital/html/index.html
-- API: http://localhost/hospital-backend/api/auth.php?action=login
+- الموقع: http://localhost:8080/hospital-system-main/hospital/html/index.html
+- API: http://localhost:8080/hospital-backend/api/auth.php?action=login
 
 ---
 

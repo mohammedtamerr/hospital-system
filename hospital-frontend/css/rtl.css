@@ -1,0 +1,209 @@
+/* ============================================
+   rtl.css - RTL/LTR Direction Management
+   Arabic = RTL | English = LTR
+   ============================================ */
+
+/* ===== DEFAULT: ARABIC RTL ===== */
+html[data-lang="ar"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* SIDEBAR: Arabic = right side */
+html[data-lang="ar"] .sidebar {
+  right: 0;
+  left: auto;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  border-right: none;
+}
+
+html[data-lang="ar"] .main {
+  margin-right: var(--sidebar-w);
+  margin-left: 0;
+}
+
+html[data-lang="ar"] .sidebar.collapsed {
+  transform: translateX(100%);
+}
+
+/* Input icons: AR = inside right edge */
+html[data-lang="ar"] .input-icon {
+  right: 12px;
+  left: auto;
+}
+
+html[data-lang="ar"] input.has-icon {
+  padding-right: 36px;
+  padding-left: 12px;
+}
+
+html[data-lang="ar"] .toggle-pw {
+  left: 10px;
+  right: auto;
+}
+
+html[data-lang="ar"] .search-wrap > i {
+  right: 12px;
+  left: auto;
+}
+
+html[data-lang="ar"] .search-wrap input {
+  padding-right: 36px;
+  padding-left: 12px;
+}
+
+/* Select arrow: AR = left side */
+html[data-lang="ar"] select {
+  background-position: left 10px center;
+  padding-right: 12px;
+  padding-left: 32px;
+}
+
+/* Nav badge: push to left in RTL */
+html[data-lang="ar"] .nav-badge {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+/* Logout button */
+html[data-lang="ar"] .btn-logout {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+/* Sidebar mobile: slides from right */
+@media (max-width: 768px) {
+  html[data-lang="ar"] .sidebar {
+    transform: translateX(100%);
+  }
+  html[data-lang="ar"] .sidebar.open {
+    transform: translateX(0);
+  }
+  html[data-lang="ar"] .main {
+    margin-right: 0;
+  }
+}
+
+/* Message items border */
+html[data-lang="ar"] .msg-item {
+  border-right: 3px solid var(--border);
+  border-left: none;
+}
+html[data-lang="ar"] .msg-item.new {
+  border-right-color: var(--danger);
+  border-left: none;
+}
+
+/* ===== ENGLISH LTR ===== */
+html[data-lang="en"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* SIDEBAR: English = left side */
+html[data-lang="en"] .sidebar {
+  left: 0;
+  right: auto;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  border-left: none;
+}
+
+html[data-lang="en"] .main {
+  margin-left: var(--sidebar-w);
+  margin-right: 0;
+}
+
+html[data-lang="en"] .sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+/* Input icons: EN = inside left edge */
+html[data-lang="en"] .input-icon {
+  left: 12px;
+  right: auto;
+}
+
+html[data-lang="en"] input.has-icon {
+  padding-left: 36px;
+  padding-right: 12px;
+}
+
+html[data-lang="en"] .toggle-pw {
+  right: 10px;
+  left: auto;
+}
+
+html[data-lang="en"] .search-wrap > i {
+  left: 12px;
+  right: auto;
+}
+
+html[data-lang="en"] .search-wrap input {
+  padding-left: 36px;
+  padding-right: 12px;
+}
+
+/* Select arrow: EN = right side */
+html[data-lang="en"] select {
+  background-position: right 10px center;
+  padding-left: 12px;
+  padding-right: 32px;
+}
+
+/* Nav badge */
+html[data-lang="en"] .nav-badge {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Logout button */
+html[data-lang="en"] .btn-logout {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Sidebar mobile: slides from left */
+@media (max-width: 768px) {
+  html[data-lang="en"] .sidebar {
+    transform: translateX(-100%);
+  }
+  html[data-lang="en"] .sidebar.open {
+    transform: translateX(0);
+  }
+  html[data-lang="en"] .main {
+    margin-left: 0;
+  }
+}
+
+/* Message items border */
+html[data-lang="en"] .msg-item {
+  border-left: 3px solid var(--border);
+  border-right: none;
+}
+html[data-lang="en"] .msg-item.new {
+  border-left-color: var(--danger);
+  border-right: none;
+}
+
+/* Table alignment */
+html[data-lang="en"] thead th,
+html[data-lang="en"] tbody td {
+  text-align: left;
+}
+
+html[data-lang="ar"] thead th,
+html[data-lang="ar"] tbody td {
+  text-align: right;
+}
+
+/* Card header actions */
+html[data-lang="en"] .modal-footer {
+  justify-content: flex-end;
+}
+
+/* Transition when switching */
+.sidebar, .main, input, select {
+  transition-property: transform, margin, padding, direction;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar=" مستشفى النور" data-en="Patient Portal - Al-Nour Hospital">بوابة المريض - مستشفى النور</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .patient-header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .patient-header h1 { color: #667eea; margin: 0; font-size: 28px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .hero-section { background: white; padding: 40px 20px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        .hero-section h2 { color: #333; margin-top: 0; font-size: 32px; }
+        .hero-section p { color: #666; font-size: 16px; }
+        .sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .section-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .section-card h3 { color: #667eea; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .section-card i { font-size: 24px; }
+        .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .doctor-card { background: white; border-radius: 8px; padding: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        .doctor-avatar { width: 80px; height: 80px; background: #667eea; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; }
+        .doctor-name { font-weight: bold; color: #333; margin: 10px 0 5px; }
+        .doctor-specialty { color: #666; font-size: 14px; }
+        .doctor-rating { color: #ffc107; margin: 8px 0; }
+        .form-section { background: white; border-radius: 10px; padding: 25px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; margin-bottom: 5px; font-weight: 600; color: #333; }
+        .form-input, .form-select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; font-family: inherit; }
+        .form-input:focus, .form-select:focus, textarea:focus { outline: none; border-color: #667eea; box-shadow: 0 0 5px rgba(102, 126, 234, 0.3); }
+        .btn { padding: 12px 30px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5568d3; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn-secondary:hover { background: #5a6268; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal { background: white; padding: 30px; border-radius: 10px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #667eea; padding-bottom: 15px; }
+        .modal-header h2 { margin: 0; color: #667eea; }
+        .modal-close { background: none; border: none; font-size: 24px; cursor: pointer; color: #666; }
+        .success-message { background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: none; }
+        .error-message { background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: none; }
+        .appointment-type { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .type-option { padding: 10px; border: 2px solid #ddd; border-radius: 5px; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .type-option:hover { border-color: #667eea; background: #f0f4ff; }
+        .type-option.selected { border-color: #667eea; background: #667eea; color: white; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #ddd; }
+        .tab { padding: 10px 20px; border: none; background: none; cursor: pointer; color: #666; font-weight: 600; border-bottom: 3px solid transparent; transition: all 0.3s; }
+        .tab.active { color: #667eea; border-bottom-color: #667eea; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="patient-header">
+    <h1><i class="fas fa-hospital-user"></i> بوابة المريض - مستشفى النور التخصصي</h1>
+    <p>Patient Portal - Al-Nour Specialist Hospital</p>
+</div>
+
+<div class="container">
+    <!-- HERO SECTION -->
+    <div class="hero-section">
+        <h2 data-ar="أهلاً بك في بوابة المريض" data-en="Welcome to Patient Portal">أهلاً بك في بوابة المريض</h2>
+        <p data-ar="سجل حسابك الآن وابدأ رحلتك الصحية معنا" data-en="Register now and start your health journey with us">سجل حسابك الآن وابدأ رحلتك الصحية معنا</p>
+    </div>
+
+    <!-- TABS -->
+    <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('doctors')">
+                <i class="fas fa-user-md"></i> <span data-ar="الأطباء" data-en="Doctors">الأطباء</span>
+            </button>
+            <button class="tab" onclick="showTab('register')">
+                <i class="fas fa-user-plus"></i> <span data-ar="تسجيل جديد" data-en="Register">تسجيل جديد</span>
+            </button>
+            <button class="tab" onclick="showTab('history')">
+                <i class="fas fa-file-medical"></i> <span data-ar="السجل الطبي" data-en="Medical History">السجل الطبي</span>
+            </button>
+        </div>
+
+        <!-- TAB: DOCTORS -->
+        <div id="tab-doctors" class="tab-content active">
+            <h3 data-ar="اختر الطبيب المناسب" data-en="Choose Your Doctor">اختر الطبيب المناسب</h3>
+            <div class="doctors-grid" id="doctorsGrid">
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                    <div class="spinner" style="margin: 0 auto;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: REGISTER -->
+        <div id="tab-register" class="tab-content">
+            <div class="form-section">
+                <h3 data-ar="تسجيل حساب جديد" data-en="Create New Account">تسجيل حساب جديد</h3>
+                <div class="success-message" id="registerSuccess">تم التسجيل بنجاح! يمكنك الآن تسجيل السجل الطبي.</div>
+                <div class="error-message" id="registerError"></div>
+                
+                <form id="registerForm" onsubmit="registerPatient(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" data-ar="الاسم بالعربية" data-en="Name (Arabic)">الاسم بالعربية</label>
+                            <input type="text" name="name_ar" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-ar="الاسم بالإنجليزية" data-en="Name (English)">الاسم بالإنجليزية</label>
+                            <input type="text" name="name_en" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+                            <input type="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-ar="رقم الجوال" data-en="Phone">رقم الجوال</label>
+                            <input type="tel" name="phone" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" data-ar="الرقم الوطني" data-en="National ID">الرقم الوطني</label>
+                            <input type="text" name="national_id" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-ar="تاريخ الميلاد" data-en="Date of Birth">تاريخ الميلاد</label>
+                            <input type="date" name="date_of_birth" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" data-ar="الجنس" data-en="Gender">الجنس</label>
+                            <select name="gender" class="form-select" required>
+                                <option value="">اختر...</option>
+                                <option value="male" data-ar="ذكر" data-en="Male">ذكر / Male</option>
+                                <option value="female" data-ar="أنثى" data-en="Female">أنثى / Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-ar="فصيلة الدم" data-en="Blood Type">فصيلة الدم</label>
+                            <select name="blood_type" class="form-select" required>
+                                <option value="">اختر فصيلة الدم...</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="العنوان" data-en="Address">العنوان</label>
+                        <textarea name="address" class="form-input" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="الحساسية" data-en="Allergies">الحساسية</label>
+                        <textarea name="allergies" class="form-input" rows="2" placeholder="إن وجدت"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="الأمراض المزمنة" data-en="Chronic Diseases">الأمراض المزمنة</label>
+                        <textarea name="chronic_diseases" class="form-input" rows="2" placeholder="إن وجدت"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                        <i class="fas fa-check"></i> <span data-ar="تسجيل" data-en="Register">تسجيل</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB: MEDICAL HISTORY -->
+        <div id="tab-history" class="tab-content">
+            <div class="form-section">
+                <h3 data-ar="تسجيل السجل الطبي" data-en="Register Medical History">تسجيل السجل الطبي</h3>
+                <div class="success-message" id="historySuccess">تم التسجيل بنجاح!</div>
+                <div class="error-message" id="historyError"></div>
+                
+                <form id="historyForm" onsubmit="addMedicalHistory(event)">
+                    <div class="form-group">
+                        <label class="form-label" data-ar="اختر المريض" data-en="Select Patient">اختر المريض</label>
+                        <select name="patient_id" class="form-select" required id="patientSelect">
+                            <option value="">اختر المريض...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="نوع الزيارة" data-en="Visit Type">نوع الزيارة</label>
+                        <div class="appointment-type">
+                            <div class="type-option" onclick="selectVisitType(this, 'hospital')">
+                                <i class="fas fa-hospital"></i><br> <span data-ar="إقامة" data-en="Admission">إقامة</span>
+                            </div>
+                            <div class="type-option" onclick="selectVisitType(this, 'clinic')">
+                                <i class="fas fa-clinic-medical"></i><br> <span data-ar="عيادة" data-en="Clinic">عيادة</span>
+                            </div>
+                            <div class="type-option" onclick="selectVisitType(this, 'emergency')">
+                                <i class="fas fa-ambulance"></i><br> <span data-ar="طارئ" data-en="Emergency">طارئ</span>
+                            </div>
+                        </div>
+                        <input type="hidden" name="visit_type" id="visitTypeInput" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="اختر الطبيب" data-en="Select Doctor">اختر الطبيب</label>
+                        <select name="doctor_id" class="form-select" required id="doctorSelect">
+                            <option value="">جاري التحميل...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="التشخيص" data-en="Diagnosis">التشخيص</label>
+                        <textarea name="diagnosis" class="form-input" rows="3" required placeholder="وصف الحالة والأعراض"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="العلاج" data-en="Treatment">العلاج</label>
+                        <textarea name="treatment" class="form-input" rows="3" placeholder="خطة العلاج..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="الأدوية الموصوفة" data-en="Prescription">الأدوية الموصوفة</label>
+                        <textarea name="prescription" class="form-input" rows="3" placeholder="قائمة الأدوية..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-ar="ملاحظات إضافية" data-en="Notes">ملاحظات إضافية</label>
+                        <textarea name="notes" class="form-input" rows="2"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                        <i class="fas fa-save"></i> <span data-ar="حفظ السجل" data-en="Save">حفظ السجل</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="../js/api.js"></script>
+<script>
+    const visitTypeMap = { 'hospital': 'إقامة', 'clinic': 'عيادة', 'emergency': 'طارئ' };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        loadDoctors();
+        loadPatients();
+    });
+
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+        document.getElementById(`tab-${tabName}`).classList.add('active');
+        event.target.closest('.tab').classList.add('active');
+    }
+
+    async function loadDoctors() {
+        try {
+            const doctors = await HospitalAPI.doctors.list();
+            const grid = document.getElementById('doctorsGrid');
+            
+            grid.innerHTML = doctors.map(d => `
+                <div class="doctor-card">
+                    <div class="doctor-avatar">${d.name_ar ? d.name_ar[0] : 'د'}</div>
+                    <div class="doctor-name">${d.name_ar}</div>
+                    <div class="doctor-specialty">${d.specialty_ar}</div>
+                    <div class="doctor-rating">
+                        ${'★'.repeat(Math.round(parseFloat(d.rating) || 5))}
+                        <br><small>${d.rating || 5.0}</small>
+                    </div>
+                    <div style="color: #666; font-size: 12px; margin-top: 10px;">
+                        ${d.department_name || ''}<br>
+                        ${d.experience_years ? d.experience_years + ' سنة خبرة' : ''}
+                    </div>
+                </div>
+            `).join('');
+        } catch (err) {
+            console.error('Error loading doctors:', err);
+        }
+    }
+
+    async function loadPatients() {
+        try {
+            const patients = await HospitalAPI.patients.list();
+            const select = document.getElementById('patientSelect');
+            select.innerHTML = '<option value="">اختر المريض...</option>' + 
+                patients.map(p => `<option value="${p.id}">${p.name_ar}</option>`).join('');
+        } catch (err) {
+            console.error('Error loading patients:', err);
+        }
+    }
+
+    async function registerPatient(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        const obj = Object.fromEntries(data);
+
+        try {
+            await HospitalAPI.patients.create(obj);
+            document.getElementById('registerSuccess').style.display = 'block';
+            form.reset();
+            setTimeout(() => document.getElementById('registerSuccess').style.display = 'none', 3000);
+            loadPatients();
+        } catch (err) {
+            document.getElementById('registerError').textContent = err.message;
+            document.getElementById('registerError').style.display = 'block';
+            setTimeout(() => document.getElementById('registerError').style.display = 'none', 3000);
+        }
+    }
+
+    function selectVisitType(el, type) {
+        document.querySelectorAll('.type-option').forEach(e => e.classList.remove('selected'));
+        el.classList.add('selected');
+        document.getElementById('visitTypeInput').value = type;
+    }
+
+    async function addMedicalHistory(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        const obj = Object.fromEntries(data);
+
+        try {
+            await HospitalAPI.medicalRecords.create(obj);
+            document.getElementById('historySuccess').style.display = 'block';
+            form.reset();
+            setTimeout(() => document.getElementById('historySuccess').style.display = 'none', 3000);
+        } catch (err) {
+            document.getElementById('historyError').textContent = err.message;
+            document.getElementById('historyError').style.display = 'block';
+            setTimeout(() => document.getElementById('historyError').style.display = 'none', 3000);
+        }
+    }
+</script>
+</body>
+</html>
